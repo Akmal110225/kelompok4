@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mencari Jalur Angkutan Umum</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJQh8rNL4BMEuui5jwoITWC2TkFkLhyEY&libraries=places&callback=initMap" async defer></script>
+    <script src="script.js"></script>
+
+</head>
+
+<body class="bg-slate-900 min-h-screen">
+    <main class="p-12 gap-x-5 flex justify-center items-center">
+        <div class="text-base-200 p-5 rounded-2xl flex flex-col gap-y-3 bg-gray-800">
+            <title>Mencari Jalur Angkutan Umum</title>
+            <select class="select select-primary text-black bg-gray-200 w-full max-w-xs" id="start">
+                <option disabled selected>Lokasi Awal</option>
+                <option value="-6.116605516593565,106.1522475529887">Alun-Alun Barat Kota Serang Banten</option>
+                <option value="-6.125096920076062,106.15774951526022">Lampu Merah Kebon Jahe</option>
+                <option value="-6.132173101716065,106.16580220084876">Lampu Merah Cikutuk</option>
+                <option value="-6.13137538176157,106.16114750126084">Lampu Merah Sempu</option>
+                <option value="-6.125447535905645,106.1640009551457">Lampu Merah Warung Pojok</option>
+                <option value="-6.119614177627003,106.16502972099633">Lampu Merah Domino</option>
+                <option value="-6.120412986250487,106.17193211124203">PerEmpatan Ciceri</option>
+                <option value="-6.124710564511617,106.17159594271996">Bundaran Ciceri</option>
+                <option value="-6.13784533752569,106.17177409254228">Lampu Merah Cipocok</option>
+                <option value="-6.167300810664283,106.17987811408396">Lampu Merah Boru</option>
+                <option value="-6.120433247395721,106.20154157288322">Lampu Merah Parung</option>
+                <option value="-6.11889483678456,106.19372484734404">RUMAH KOST BETAH</option>
+            </select>
+
+            <select class="select select-primary text-black bg-gray-200 w-full max-w-xs" id="end">
+                <option disabled selected>Lokasi Tujuan</option>
+                <option value="-6.11889483678456,106.19372484734404">RUMAH KOST BETAH</option>
+                <option value="-6.116605516593565,106.1522475529887">Alun-Alun Barat Kota Serang Banten</option>
+                <option value="-6.125096920076062,106.15774951526022">Lampu Merah Kebon Jahe</option>
+                <option value="-6.132173101716065,106.16580220084876">Lampu Merah Cikutuk</option>
+                <option value="-6.13137538176157,106.16114750126084">Lampu Merah Sempu</option>
+                <option value="-6.125447535905645,106.1640009551457">Lampu Merah Warung Pojok</option>
+                <option value="-6.119614177627003,106.16502972099633">Lampu Merah Domino</option>
+                <option value="-6.120412986250487,106.17193211124203">PerEmpatan Ciceri</option>
+                <option value="-6.124710564511617,106.17159594271996">Bundaran Ciceri</option>
+                <option value="-6.13784533752569,106.17177409254228">Lampu Merah Cipocok</option>
+                <option value="-6.167300810664283,106.17987811408396">Lampu Merah Boru</option>
+                <option value="-6.120433247395721,106.20154157288322">Lampu Merah Parung</option>
+            </select>
+
+            <select class="select select-primary text-black bg-gray-200 w-full max-w-xs" id="mode">
+                <option disabled selected value="DRIVING">Mode</option>
+                <option value="DRIVING">Driving</option>
+                <option value="WALKING">Walking</option>
+                <option value="BICYCLING">Bicycling</option>
+            </select>
+
+            <button class="btn btn-primary w-full max-w-xs" onclick="calcRoute()">Cari Rute</button>
+            <div id="detail" class="hidden bg-gray-700 p-5 rounded-lg mt-5">
+                <h4>Detail</h4>
+                <div class="card-custom">
+                    <table>
+                        <tr>
+                            <th>Jarak</th>
+                            <th>:</th>
+                            <td id="distance"></td>
+                        </tr>
+                        <tr>
+                            <th>Durasi</th>
+                            <th>:</th>
+                            <td id="duration"></td>
+                        </tr>
+                        <tr>
+                            <th>Harga</th>
+                            <th>:</th>
+                            <td id="price"></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-black h-[700px] w-[1300px] text-base-200 p-10 rounded-2xl" id="show-map"></div>
+    </main>
+
+</body>
+
+</html>
